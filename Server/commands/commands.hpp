@@ -35,8 +35,9 @@ class SetliquidCommand : public Command {
 public:
     SetliquidCommand(ServerTime* time, Blocks* blocks, Liquids* liquids, Entities* entities, Items* items, ServerPlayers* players, ServerChat* chat, Print* print) : Command(time, blocks, liquids, entities, items, players, chat, print, "setLiquid",
                                                                                                                           "Possible invocations of this command:\n"
-                                                                                                                          "setLiquid [x_coordinate] [y_coordinate] [liquid]"
-                                                                                                                          "setLiquid [x_coordinate] [y_coordinate] [liquid] [liquid_level]", "place a liquid in world") {}
+                                                                                                                          "setLiquid [x_coordinate] [y_coordinate] [liquid]\n"
+                                                                                                                          "setLiquid [x_coordinate] [y_coordinate] [liquid] [liquid_level]", 
+                                                                                                                                        "place a liquid in world") {}
     bool onCommand(std::vector<std::string>& args, ServerPlayer* executor) override;
 };
 
@@ -74,7 +75,8 @@ public:
     SetHealthCommand(ServerTime* time, Blocks* blocks, Liquids* liquids, Entities* entities, Items* items, ServerPlayers* players, ServerChat* chat, Print* print) : Command(time, blocks, liquids, entities, items, players, chat, print, "setHealth",
                                                                                                          "Possible invocations of this command:\n"
                                                                                                          "setHealth [health] -> set your health to that number\n"
-                                                                                                         "setHealth [health] [player_name] -> set that player's name to that number", "set player's health") {}
+                                                                                                         "setHealth [health] [player_name] -> set that player's name to that number", 
+                                                                                                                            "set player's health") {}
     bool onCommand(std::vector<std::string>& args, ServerPlayer* executor) override;
 };
 
