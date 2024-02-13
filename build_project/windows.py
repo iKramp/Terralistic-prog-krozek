@@ -39,7 +39,7 @@ class GenerateGlad(tasks.Task):
 
     def execute(self):
         if not utils.exists(self.project_path + "Dependencies/glad/"):
-            utils.system(f"py -m glad --profile compatibility --out-path \"{self.project_path}Dependencies/glad/\" --api gl=4.6 --generator c")
+            utils.system(f"python3 -m glad --profile compatibility --out-path \"{self.project_path}Dependencies/glad/\" --api gl=4.6 --generator c")
         else:
             print("Glad already generated")
 
