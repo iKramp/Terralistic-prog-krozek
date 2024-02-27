@@ -71,6 +71,7 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->result = ItemStack(&items.shovel, 1);
     recipe->ingredients[&items.hammer] = 1;
     recipe->ingredients[&items.hatchet] = 1;
+    recipes->registerARecipe(recipe);
 
     recipe = new Recipe;
     recipe->result = ItemStack(&items.dirt, 10);
