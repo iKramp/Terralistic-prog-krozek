@@ -66,6 +66,12 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->result = ItemStack(&items.wood_planks, 1);
     recipe->ingredients[&items.wood_wall] = 4;
     recipes->registerARecipe(recipe);
+
+    recipe = new Recipe;
+    recipe->result = ItemStack(&items.shovel, 1);
+    recipe->ingredients[&items.hammer] = 1;
+    recipe->ingredients[&items.hatchet] = 1;
+    recipes->registerARecipe(recipe);
 }
 
 BlockTypes::BlockTypes(Blocks* blocks, Walls* walls, Liquids* liquids) :
