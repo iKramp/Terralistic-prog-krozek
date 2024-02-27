@@ -180,6 +180,7 @@ public:
     ItemType furnace{"furnace"};
     ItemType wood_platform{"wood_platform"};
     ItemType wood_wall{"wood_wall"};
+    ItemType 
 };
 
 class GameContent : public NonCopyable {
