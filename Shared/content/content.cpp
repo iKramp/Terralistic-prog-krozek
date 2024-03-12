@@ -61,10 +61,12 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->result = ItemStack(&items.wood_wall, 4);
     recipe->ingredients[&items.wood_planks] = 1;
     recipes->registerARecipe(recipe);
-    
+   
+
     recipe = new Recipe;
-    recipe->result = ItemStack(&items.wood_planks, 1);
-    recipe->ingredients[&items.wood_wall] = 4;
+    recipe->result = ItemStack(&items.stick, 7);
+    recipe->ingredients[&items.copper_ore] = 11;
+    recipe->ingredients[&items.shovel] = 7;
     recipes->registerARecipe(recipe);
 
     recipe = new Recipe;
