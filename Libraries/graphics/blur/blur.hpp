@@ -4,6 +4,7 @@ namespace gfx {
 
 inline bool blur_enabled = true;
 inline bool anti_stutter = false;
+inline bool shadow_enabled = true;
 
 };
 

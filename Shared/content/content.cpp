@@ -85,6 +85,13 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->result = ItemStack(&items.torch, 55);
     recipe->ingredients[&items.fiber] = 1;
     recipes->registerARecipe(recipe);
+
+    recipe = new Recipe;
+    recipe->result = ItemStack(&items.wood_platform, 1);
+    recipe->ingredients[&items.wood_planks] = 5;
+    recipe->ingredients[&items.stone] = 1;
+    recipes->registerARecipe(recipe);
+
 }
 
 BlockTypes::BlockTypes(Blocks* blocks, Walls* walls, Liquids* liquids) :

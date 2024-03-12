@@ -60,6 +60,16 @@ public:
     explicit BlurChangeListener(BooleanSetting* blur_setting) : blur_setting(blur_setting) {}
 };
 
+//TODO make this shadow change listener
+class ShadowChangeListener : public EventListener<SettingChangeEvent> {
+    BooleanSetting* shadow_setting;
+    void onEvent(SettingChangeEvent& event) override {
+        gfx::shadow_enabled = shadow_setting->getValue();
+    }
+public:
+    explicit ShadowChangeListener(BooleanSetting* shadow_setting) : shadow_setting(shadow_setting) {}
+};
+
 class AntiStutterListener : public EventListener<SettingChangeEvent> {
     BooleanSetting* stutter_setting;
     void onEvent(SettingChangeEvent& event) override {
@@ -113,6 +123,11 @@ int main(int argc, const char **argv) {
     BlurChangeListener blur_change_listener(&blur_setting);
     blur_setting.setting_change_event.addListener(&blur_change_listener);
     settings.addSetting(&blur_setting);
+
+    BooleanSetting shadow_setting("Shadow Effect", true);
+    ShadowChangeListener shadow_change_listener(&shadow_setting);
+    shadow_setting.setting_change_event.addListener(&shadow_change_listener);
+    settings.addSetting(&shadow_setting);
 
     BooleanSetting stutter_setting("Anti stutter", true);
     AntiStutterListener stutter_listener(&stutter_setting);
