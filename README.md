@@ -7,7 +7,8 @@
 
 <h4 align="center">
   Discord server: https://discord.gg/dSStXTucCc
-
+</h4>
+<h4>
 To build, just run:
 
 ```bash
@@ -26,6 +27,7 @@ If you want to edit code use:
 -   MacOS: vim
 -   Linux: vim
 </h4>
+
 
 
 
