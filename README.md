@@ -16,7 +16,7 @@ You will need to have installed to build:
 -   glad
 
 If you want to edit code use:
--   Windows: CLion
--   MacOS: XCode
--   Linux: CLion
+-   Windows: Linux
+-   MacOS: vim
+-   Linux: vim
 
