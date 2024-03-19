@@ -102,7 +102,6 @@ int Walls::getBreakProgress(int x, int y) {
 void Walls::updateBreakingWalls(int frame_length) {
     for(int i = 0; i < breaking_walls.size(); i++) {
         if(breaking_walls[i].is_breaking) {
-           if(WallType )
             breaking_walls[i].break_progress += frame_length;
             if(breaking_walls[i].break_progress > getWallType(breaking_walls[i].x, breaking_walls[i].y)->break_time)
                 breakWall(breaking_walls[i].x, breaking_walls[i].y);
@@ -117,12 +116,9 @@ int Walls::getBreakStage(int x, int y) {
 void Walls::startBreakingWall(int x, int y) {
     if(x < 0 || x >= getWidth() || y < 0 || y >= getHeight())
         throw Exception("Wall is accessed out of the bounds! (" + std::to_string(x) + ", " + std::to_string(y) + ")");
-  
-    if (getWall(x, y)->id == 0) {
-        return;
-    }
 
-    BreakingWall* breaking_wall = nullptr;
+
+       BreakingWall* breaking_wall = nullptr;
     
     for(auto & i : breaking_walls)
         if(i.x == x && i.y == y)
