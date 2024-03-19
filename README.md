@@ -1,7 +1,14 @@
-# Terralistic [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e351ded73fe64d2f9ce9f6dc1807a019)](https://www.codacy.com/gh/Zorz42/Terralistic/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Zorz42/Terralistic&amp;utm_campaign=Badge_Grade)
 
-Discord server: https://discord.gg/dSStXTucCc
+<h1 align="center">
+  <br>
+  Terralistic
+  <br>
+</h1>
 
+<h4 align="center">
+  Discord server: https://discord.gg/dSStXTucCc
+</h4>
+<h4>
 To build, just run:
 
 ```bash
@@ -16,7 +23,11 @@ You will need to have installed to build:
 -   glad
 
 If you want to edit code use:
--   Windows: CLion
--   MacOS: XCode
--   Linux: CLion
+-   Windows: Linux
+-   MacOS: vim
+-   Linux: vim
+</h4>
+
+
+
 
