@@ -66,7 +66,7 @@ class Walls : public NonCopyable {
     
     int curr_id = 0;
 public:
-    explicit Walls(Blocks* blocks) : blocks(blocks), clear("clear"), hammer("hammer") { registerNewWallType(&clear); blocks->registerNewToolType(&hammer); clear.break_time = UNBREAKABLE; }
+    explicit Walls(Blocks* blocks) : blocks(blocks), clear("clear"), hammer("hammer") { clear.break_time = UNBREAKABLE; registerNewWallType(&clear); blocks->registerNewToolType(&hammer); }
     void create();
 
     WallType clear;
