@@ -90,6 +90,13 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->ingredients[&items.stone] = 1;
     recipes->registerARecipe(recipe);
 
+    recipe = new Recipe;
+    recipe->result = ItemStack(&items.sickle, 1);
+    recipe->ingredients[&items.stick] = 1;
+    recipe->ingredients[&items.stone] = 3;
+    recipe->ingredients[&items.fiber] = 1;
+    recipes->registerARecipe(recipe);
+
 }
 
 BlockTypes::BlockTypes(Blocks* blocks, Walls* walls, Liquids* liquids) :
