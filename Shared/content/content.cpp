@@ -61,10 +61,12 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->result = ItemStack(&items.wood_wall, 4);
     recipe->ingredients[&items.wood_planks] = 1;
     recipes->registerARecipe(recipe);
-    
+   
+
     recipe = new Recipe;
-    recipe->result = ItemStack(&items.wood_planks, 1);
-    recipe->ingredients[&items.wood_wall] = 4;
+    recipe->result = ItemStack(&items.stick, 7);
+    recipe->ingredients[&items.copper_ore] = 11;
+    recipe->ingredients[&items.shovel] = 7;
     recipes->registerARecipe(recipe);
 
     recipe = new Recipe;
@@ -88,6 +90,19 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe->result = ItemStack(&items.wood_platform, 1);
     recipe->ingredients[&items.wood_planks] = 5;
     recipe->ingredients[&items.stone] = 1;
+    recipes->registerARecipe(recipe);
+
+    recipe = new Recipe;
+    recipe->result = ItemStack(&items.copper_ingot, 1);
+    recipe->ingredients[&items.copper_ore] = 1;
+    //recipe->crafting_block = &blocks.furnace;
+    recipes->registerARecipe(recipe);
+
+    recipe = new Recipe;
+    recipe->result = ItemStack(&items.sickle, 1);
+    recipe->ingredients[&items.stick] = 1;
+    recipe->ingredients[&items.stone] = 3;
+    recipe->ingredients[&items.fiber] = 1;
     recipes->registerARecipe(recipe);
 
 }

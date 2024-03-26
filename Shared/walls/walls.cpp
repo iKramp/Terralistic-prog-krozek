@@ -1,6 +1,8 @@
 #include "walls.hpp"
 #include "compress.hpp"
 
+
+
 Walls::Wall* Walls::getWall(int x, int y) {
     if(x < 0 || x >= getWidth() || y < 0 || y >= getHeight() || walls.empty())
         throw Exception("Wall is accessed out of the bounds! (" + std::to_string(x) + ", " + std::to_string(y) + ")");
@@ -116,8 +118,9 @@ int Walls::getBreakStage(int x, int y) {
 void Walls::startBreakingWall(int x, int y) {
     if(x < 0 || x >= getWidth() || y < 0 || y >= getHeight())
         throw Exception("Wall is accessed out of the bounds! (" + std::to_string(x) + ", " + std::to_string(y) + ")");
-    
-    BreakingWall* breaking_wall = nullptr;
+
+
+       BreakingWall* breaking_wall = nullptr;
     
     for(auto & i : breaking_walls)
         if(i.x == x && i.y == y)
