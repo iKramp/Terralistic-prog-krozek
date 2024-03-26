@@ -4,7 +4,7 @@
 void Entities::updateAllEntities() {
     for(auto & entity : entities) {
         float old_vel_x = entity->velocity_x, old_vel_y = entity->velocity_y;
-        entity->updateEntity(blocks);
+        entity->updateEntity(blocks, liquids);
         if(entity->type == EntityType::PLAYER && (old_vel_x != entity->velocity_x || old_vel_y != entity->velocity_y)){
             EntityAbsoluteVelocityChangeEvent event(entity, old_vel_x, old_vel_y);
             entity_absolute_velocity_change_event.call(event);
@@ -37,12 +37,17 @@ Entity* Entities::getEntityById(int id) {
     throw Exception("Entity not found by id");
 }
 
-void Entity::updateEntity(Blocks *blocks) {
+void Entity::updateEntity(Blocks *blocks, Liquids *liquids) {
     if(friction) {
         velocity_y *= 0.995f;
         velocity_x *= isTouchingGround(blocks) ? 0.99f : 0.9995f;
     }
-    
+
+    if(isInLiquid(liquids)) {
+        velocity_x *= 0.9;
+        velocity_y *= 0.1;
+    }
+
     if(isTouchingGround(blocks))
         velocity_y = 0;
     else if(gravity)
@@ -80,6 +85,10 @@ void Entity::updateEntity(Blocks *blocks) {
         x = x_to_be;
     has_moved_x = prev_x != x;
     has_moved = (prev_y != y) || has_moved_x;
+}
+
+bool Entity::isInLiquid(Liquids* liquids) {
+    return(getLiquid(x, y + 1)-> id == 1);
 }
 
 bool Entity::isTouchingGround(Blocks* blocks) {
