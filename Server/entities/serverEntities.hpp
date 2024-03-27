@@ -16,5 +16,5 @@ class ServerEntities : public ServerModule, public Entities, EventListener<Entit
     void stop() override;
     
 public:
-    ServerEntities(Blocks* blocks, ServerNetworking* networking) : Entities(blocks), networking(networking) {}
+    ServerEntities(Blocks* blocks, Liquids* liquids,ServerNetworking* networking) : Entities(blocks, liquids), networking(networking) {}
 };

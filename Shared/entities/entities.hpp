@@ -20,7 +20,6 @@ public:
     const EntityType type;
     virtual bool isColliding(Blocks* blocks, Direction direction, float colliding_x, float colliding_y);
     bool isInLiquid(Liquids* liquids);
-    float getliquid(int x, int y);
     bool isCollidingWithBlocks(Blocks* blocks, Direction direction, float colliding_x, float colliding_y);
     void updateEntity(Blocks* blocks, Liquids* liquids);
     bool isTouchingGround(Blocks* blocks);
@@ -63,7 +62,7 @@ class Entities : public NonCopyable {
     Blocks* blocks;
     Liquids* liquids;
 public:
-    explicit Entities(Blocks* blocks) : blocks(blocks) {}
+    explicit Entities(Blocks* blocks, Liquids* liquids) : blocks(blocks), liquids(liquids) {}
     
     void updateAllEntities();
     void registerEntity(Entity* entity);

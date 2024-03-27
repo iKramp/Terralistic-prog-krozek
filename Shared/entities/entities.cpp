@@ -44,8 +44,8 @@ void Entity::updateEntity(Blocks *blocks, Liquids *liquids) {
     }
 
     if(isInLiquid(liquids)) {
-        velocity_x *= 0.9;
-        velocity_y *= 0.1;
+        velocity_x *= 1;
+        velocity_y *= 0.8;
     }
 
     if(isTouchingGround(blocks))
@@ -88,7 +88,7 @@ void Entity::updateEntity(Blocks *blocks, Liquids *liquids) {
 }
 
 bool Entity::isInLiquid(Liquids* liquids) {
-    return(getLiquid(x, y + 1)-> id == 1);
+    return(liquids -> getLiquidType(x /(BLOCK_WIDTH * 2), y /(BLOCK_WIDTH * 2)) == liquids -> getLiquidTypeByName("water"));
 }
 
 bool Entity::isTouchingGround(Blocks* blocks) {
