@@ -1,5 +1,6 @@
 #pragma once
 #include "blocks.hpp"
+#include "liquids.hpp"
 
 enum class EntityType { ITEM, PLAYER };
 enum class Direction { LEFT, RIGHT, UP, DOWN };
@@ -18,8 +19,9 @@ public:
     const int id;
     const EntityType type;
     virtual bool isColliding(Blocks* blocks, Direction direction, float colliding_x, float colliding_y);
+    bool isInLiquid(Liquids* liquids);
     bool isCollidingWithBlocks(Blocks* blocks, Direction direction, float colliding_x, float colliding_y);
-    void updateEntity(Blocks* blocks);
+    void updateEntity(Blocks* blocks, Liquids* liquids);
     bool isTouchingGround(Blocks* blocks);
     
     float getVelocityX() const;
@@ -58,8 +60,9 @@ public:
 class Entities : public NonCopyable {
     std::vector<Entity*> entities;
     Blocks* blocks;
+    Liquids* liquids;
 public:
-    explicit Entities(Blocks* blocks) : blocks(blocks) {}
+    explicit Entities(Blocks* blocks, Liquids* liquids) : blocks(blocks), liquids(liquids) {}
     
     void updateAllEntities();
     void registerEntity(Entity* entity);
