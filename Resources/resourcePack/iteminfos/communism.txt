@@ -1,0 +1,5 @@
+display_name: Communism 
+max_stack: 1
+places_block: air
+places_wall: clear
+tool_properties:
