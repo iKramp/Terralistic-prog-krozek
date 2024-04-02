@@ -239,6 +239,9 @@ bool ClientInventory::onKeyDown(gfx::Key key) {
                 packet << ClientPacketType::INVENTORY_SWAP << result;
                 networking->sendPacket(packet);
             }
+            if (open) {
+                inventory->updateAvailableRecipes();
+            }
             return true;
         case gfx::Key::MOUSE_LEFT: {
             if(hovered != -1) {

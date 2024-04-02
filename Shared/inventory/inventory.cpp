@@ -145,10 +145,10 @@ bool Inventory::canCraftRecipe(const Recipe* recipe) {
         if (recipe->crafting_block == nullptr) {
             return true;
         } else if (player != nullptr && blocks != nullptr) {
-            for (int i = player->getX() / (BLOCK_WIDTH * 2) - 3;
-                 i < player->getX() / (BLOCK_WIDTH * 2) + 3; i++) {
-                for (int j = player->getY() / (BLOCK_WIDTH * 2) - 3;
-                     j < player->getY() / (BLOCK_WIDTH * 2) + 3; j++) {
+            for (int i = player->getX() / (BLOCK_WIDTH * 2) - 5;
+                 i < player->getX() / (BLOCK_WIDTH * 2) + 5; i++) {
+                for (int j = player->getY() / (BLOCK_WIDTH * 2) - 5;
+                     j < player->getY() / (BLOCK_WIDTH * 2) + 5; j++) {
                     if (i >= 0 && j >= 0 && i < blocks->getWidth() && j < blocks->getHeight() &&
                         blocks->getBlockType(i, j) == recipe->crafting_block) {
                         return true;

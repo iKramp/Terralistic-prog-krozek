@@ -95,7 +95,7 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe = new Recipe;
     recipe->result = ItemStack(&items.copper_ingot, 1);
     recipe->ingredients[&items.copper_ore] = 1;
-    //recipe->crafting_block = &blocks.furnace;
+    recipe->crafting_block = &blocks.furnace;
     recipes->registerARecipe(recipe);
 
     recipe = new Recipe;
