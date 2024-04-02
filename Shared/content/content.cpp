@@ -101,7 +101,7 @@ void GameContent::addRecipes(Recipes* recipes) {
     recipe = new Recipe;
     recipe->result = ItemStack(&items.sickle, 1);
     recipe->ingredients[&items.stick] = 1;
-    recipe->ingredients[&items.stone] = 3;
+    recipe->ingredients[&items.copper_ingot] = 3;
     recipe->ingredients[&items.fiber] = 1;
     recipes->registerARecipe(recipe);
 
