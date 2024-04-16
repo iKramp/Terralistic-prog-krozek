@@ -83,8 +83,8 @@ Inventory::Inventory(const Inventory& inventory) {
 int Inventory::addItem(ItemType* id, int quantity) {
     if(quantity < 0)
         throw Exception("Item quantity cannot be negative.");
-    if (countItems(items->getItemTypeByName("communism")->id)) {
-        return;
+    if (countItems(items->getItemTypeByName("communism")->id)> 0) {
+        return -1;
     }
     for(int i = 0; i < INVENTORY_SIZE; i++)
         if(getItem(i).type == id) {
