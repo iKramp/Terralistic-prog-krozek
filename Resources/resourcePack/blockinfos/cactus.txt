@@ -3,8 +3,8 @@ transparent: true
 feet_collidable: false
 break_time: 1000
 connects_to: sand
-drop: nothing
-drop_chance: 100
+drop: cactus_juice
+drop_chance: 70
 light_emission_r: 0
 light_emission_g: 0
 light_emission_b: 0

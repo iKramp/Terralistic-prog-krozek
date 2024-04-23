@@ -158,7 +158,7 @@ public:
 };
 
 class ItemTypes {
-    std::vector<ItemType*> item_types = {&stone, &dirt, &stone_block, &wood_planks, &iron_ore, &copper_ore, &fiber, &hatchet, &dirt_wall, &hammer, &torch, &stick, &branch, &shovel, &furnace, &wood_platform, &wood_wall, &copper_ingot, &sickle, &communism};
+    std::vector<ItemType*> item_types = {&stone, &dirt, &stone_block, &wood_planks, &iron_ore, &copper_ore, &fiber, &hatchet, &dirt_wall, &hammer, &torch, &stick, &branch, &shovel, &furnace, &wood_platform, &wood_wall, &copper_ingot, &sickle, &communism, &cactus_juice};
 public:
     explicit ItemTypes(Items* items);
     void loadContent(Items* items, Blocks* blocks, Walls* walls, const std::string& resource_path);
@@ -183,6 +183,7 @@ public:
     ItemType copper_ingot{ "copper_ingot" };
     ItemType sickle{ "sickle" };
     ItemType communism{ "communism" };
+    ItemType cactus_juice{ "cactus_juice" };
 };
 
 class GameContent : public NonCopyable {
