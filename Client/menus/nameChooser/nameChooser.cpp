@@ -1,9 +1,12 @@
 #include "nameChooser.hpp"
 #include "platform_folders.h"
 #include "game.hpp"
+#include <random>
+
+std::string generateRandomUsername();
 
 void NameChooser::init() {
-    ConfigFile config(sago::getDataHome() + "/Terralistic/servers.txt");
+    config = ConfigFile(sago::getDataHome() + "/Terralistic/servers.txt");
     config.setDefaultStr("username", "");
     
     back_button.setScale(3);
@@ -39,6 +42,13 @@ void NameChooser::init() {
     name_input.def_color.a = TRANSPARENCY;
     
     text_inputs = {&name_input};
+
+    random_button.setScale(3);
+    random_button.loadFromSurface(gfx::textToSurface("Random"));
+    random_button.y = SPACING+100;
+    random_button.orientation = gfx::CENTER;
+
+    buttons = {&random_button};
 }
 
 bool NameChooser::onKeyUp(gfx::Key key) {
@@ -48,6 +58,9 @@ bool NameChooser::onKeyUp(gfx::Key key) {
     } else if((key == gfx::Key::MOUSE_LEFT && join_button.isHovered(getMouseX(), getMouseY(), getMouseVel())) || (key == gfx::Key::ENTER && can_join)) {
         Game(menu_back, settings, name_input.getText(), server_ip).start();
         returnFromScene();
+        return true;
+    } else if (key == gfx::Key::MOUSE_LEFT && random_button.isHovered(getMouseX(), getMouseY(), getMouseVel())) {
+        name_input.setText(generateRandomUsername());
         return true;
     }
     return false;
@@ -65,9 +78,21 @@ void NameChooser::render() {
     back_button.render(getMouseX(), getMouseY(), getMouseVel(), getKeyState(gfx::Key::MOUSE_LEFT));
     choose_name_title.render();
     name_input.render(getMouseX(), getMouseY(), getMouseVel());
+    random_button.render(getMouseX(), getMouseY(), getMouseVel(), getKeyState(gfx::Key::MOUSE_LEFT));
+}
+
+std::string generateRandomUsername() {
+    static const std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+    static std::random_device rd;
+    static std::mt19937 generator(rd());
+    std::uniform_int_distribution<int> distribution(0, charset.size() - 1);
+    std::string username;
+    for (int i = 0; i < 8; ++i) {
+        username += charset[distribution(generator)];
+    }
+    return username;
 }
 
 void NameChooser::stop() {
-    ConfigFile config(sago::getDataHome() + "/Terralistic/servers.txt");
     config.setStr("username", name_input.getText());
 }
