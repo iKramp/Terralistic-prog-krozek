@@ -1,7 +1,7 @@
 #pragma once
 #include "serverBlocks.hpp"
 #include "player.hpp"
-#include "inventory.hpp"
+#include "ServerInventory.hpp"
 #include "serverNetworking.hpp"
 #include "worldSaver.hpp"
 #include "liquids.hpp"
@@ -15,7 +15,7 @@ public:
     std::string name;
     int x = 0, y = 0;
     int health = 0;
-    Inventory inventory;
+    ServerInventory inventory;
 };
 
 class ServerPlayer : public Player, EventListener<InventoryItemChangeEvent> {
@@ -23,12 +23,13 @@ class ServerPlayer : public Player, EventListener<InventoryItemChangeEvent> {
     
     void onEvent(InventoryItemChangeEvent& event) override;
 public:
-    explicit ServerPlayer(const ServerPlayerData& data) : Player(data.x, data.y, data.name, data.health), inventory(data.inventory) {
+    explicit ServerPlayer(const ServerPlayerData& data) : Player(data.x, data.y, data.name, data.health), inventory(
+            nullptr, nullptr, data.inventory) {
         friction = false;
         inventory.item_change_event.addListener(this);
     }
 
-    Inventory inventory;
+    ServerInventory inventory;
     
     void setConnection(Connection* connection);
     Connection* getConnection();
